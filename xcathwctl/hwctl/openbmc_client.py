@@ -14,7 +14,7 @@ from common import utils, rest
 from common.exceptions import SelfClientException, SelfServerException
 
 import logging
-logger = logging.getLogger('xcatagent')
+logger = logging.getLogger('xcathwctl')
 
 HTTP_PROTOCOL = "https://"
 PROJECT_URL = "/xyz/openbmc_project"
