@@ -21,6 +21,8 @@ logger = logging.getLogger('xcatagent')
 class OpenBMCInventoryTask(ParallelNodesCommand):
     """Executor for inventory-related actions."""
 
+    inventory_result = {}
+
     def pre_get_firm_info(self, task, target_file=None, **kw):
 
         if not target_file:
@@ -38,8 +40,10 @@ class OpenBMCInventoryTask(ParallelNodesCommand):
                 if version and purpose:
                     break
 
-        self.callback.info('TAR %s Firmware Product Version: %s' \
-                            % (purpose, version))
+        result = 'TAR %s Firmware Product Version: %s' \
+                  % (purpose, version)
+        self.callback.info(result)
+        inventory_result.update({target_file: {'rc': 0, 'data': result}})
 
     def _get_firm_info(self, firm_info_list):
         (has_functional, firm_obj_dict) = firm_info_list
@@ -153,8 +157,10 @@ class OpenBMCInventoryTask(ParallelNodesCommand):
             for info in inventory_info:
                 self.callback.info( '%s: %s' % (node, info))
 
+            self.inventory_result.update({node: {'rc': 0, 'data': inventory_info}})
         except (SelfServerException, SelfClientException) as e:
             self.callback.error(e.message, node)
+            self.inventory_result.update({node: {'rc': 1, 'data': [e.message]}}) 
 
         return inventory_info 
 
@@ -172,11 +178,17 @@ class OpenBMCInventoryTask(ParallelNodesCommand):
 
             for info in firm_info:
                 self.callback.info( '%s: %s' % (node, info))
+            self.inventory_result.update({node: {'rc': 0, 'data': firm_info}})
 
         except (SelfServerException, SelfClientException) as e:
             self.callback.error(e.message, node)
+            self.inventory_result.update({node: {'rc': 1, 'data': [e.message]}})
 
         return firm_info
+
+    def result(self):
+
+        return self.inventory_result
 
 
             
