@@ -19,12 +19,19 @@
 ## Methods of OpenBMCManager:
 
 ``def power_state``      : show host power status
+
 ``def power_on``         : power on host
+
 ``def power_off``        : power off host
+
 ``def power_softoff``    : power softoff host
+
 ``def power_reset``      : reset host
+
 ``def power_boot``       : boot host
+
 ``def power_bmc_state``  : show bmc status
+
 ``def power_bmc_reboot`` : reboot bmc
 
 ## Return data from openbmc_manager:
