@@ -34,7 +34,7 @@
 
 ``def power_bmc_reboot`` : reboot bmc
 
-## Return data from openbmc_manager:
+## Return data from OpenBMCManager:
 
 json type as below:
 
