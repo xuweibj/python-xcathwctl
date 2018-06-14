@@ -48,4 +48,4 @@ manager = OpenBMCManager(node_dict, verbose)
 result = manager.power_state()
 ```
 
-**example** is an example file to call method of xcathwctl to run rpower command.
+**example.py** is an example file to call method of xcathwctl to run rpower command.
