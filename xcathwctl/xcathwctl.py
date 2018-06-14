@@ -4,7 +4,6 @@ import json
 import argparse
 
 from common import utils
-from message_handle import Messager
 from hwctl.executor.openbmc_inventory import OpenBMCInventoryTask
 from hwctl.executor.openbmc_power import OpenBMCPowerTask
 from hwctl.inventory import DefaultInventoryManager
@@ -28,12 +27,13 @@ class OpenBMCManager():
     :param verbose: A boolean indicating show verbose information
     """
 
-    def __init__(self, nodesinfo, verbose=False):
+    def __init__(self, nodesinfo, json_fmt=True, debug=False, verbose=False):
         """Inits OpenBMCManager with nodesinfo"""
         self.nodesinfo = nodesinfo
-        self.messager = Messager(verbose)
-        self.debugmode = verbose
-        self.verbose = False
+        self.messager = utils.Messager()
+        self.json_fmt = json_fmt
+        self.debugmode = debug
+        self.verbose = verbose
 
         if self.debugmode:
             logger.setLevel(logging.DEBUG)
@@ -47,28 +47,67 @@ class OpenBMCManager():
 
     def _get_result(self):
 
-        return json.dumps(self.result_dict) 
+        if self.json_fmt:
+            return json.dumps(self.result_dict) 
+        else:
+            return self.result_dict
+
+    def firm(self):
+        """Get FIRM information
+
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """
+        runner = self._get_runner('rinv')
+        self.result_dict = DefaultInventoryManager().get_firm_info(runner)
+        return self._get_result()
 
     def inventory(self):
+        """Get all inventory information
 
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """ 
         runner = self._get_runner('rinv') 
         self.result_dict = DefaultInventoryManager().get_inventory_info(runner, ['all'])
         return self._get_result()
 
     def inv_cpu(self):
+        """Get CPU information
 
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """
         runner = self._get_runner('rinv')
         self.result_dict = DefaultInventoryManager().get_inventory_info(runner, ['cpu'])
         return self._get_result()
 
-    def inv_model(self):
+    def inv_dimm(self):
+        """Get DIMM information
 
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """
+        runner = self._get_runner('rinv')
+        self.result_dict = DefaultInventoryManager().get_inventory_info(runner, ['dimm'])
+        return self._get_result()
+
+    def inv_model(self):
+        """Get model information
+
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """
         runner = self._get_runner('rinv')
         self.result_dict = DefaultInventoryManager().get_inventory_info(runner, ['model'])
         return self._get_result()
 
     def inv_serial(self):
+        """Get serial information
 
+        :rtype: json
+        :return: all nodes' data and retrun code
+        """
         runner = self._get_runner('rinv')
         self.result_dict = DefaultInventoryManager().get_inventory_info(runner, ['serial'])
         return self._get_result()

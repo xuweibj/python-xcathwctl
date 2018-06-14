@@ -1,8 +1,8 @@
 # xcathwctl
 
-**example** is an example file to call method of xcathwctl to run rpower command.
+## Installation
 
-Steps to call OpenBMCManager:
+``python setup.py install``
 
 ## Import xcathwctl
 
@@ -10,7 +10,7 @@ Steps to call OpenBMCManager:
 
 ## Instantiation
 
-``OpenBMCManager(node_dict, verbose)``
+``OpenBMCManager(node_dict, debug, verbose)``
 
 ``node_dict`` is a dict contains node, bmcip, bmc, username, password. Format as: ``{"node1": {"bmcip": "x.x.x.x", "username": "root", "password": "xxxxxx"}, "node2": {"bmcip": "x.x.x.x", "username": "root", "password": "xxxxxx"}}``
 
@@ -33,7 +33,6 @@ json type as below:
 
 ``{"node1": {"data": ["BMC Ready"], "rc": 0}, "node2": {"data": ["BMC Ready"], "rc": 0}}``
 
-
 ## Example
 
 ```
@@ -41,3 +40,5 @@ from xcathwctl import OpenBMCManager
 manager = OpenBMCManager(node_dict, verbose)
 result = manager.power_state()
 ```
+
+**example** is an example file to call method of xcathwctl to run rpower command.

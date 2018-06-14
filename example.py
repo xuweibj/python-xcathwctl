@@ -14,7 +14,6 @@ def loadData(file_name):
 if __name__ == '__main__':
 
     data = loadData('data.json')
-    verbose = True
-    manager = OpenBMCManager(data, verbose)
+    manager = OpenBMCManager(data, json_fmt=False, debug=False, verbose=True)
     result = manager.power_bmc_state()
     print result
