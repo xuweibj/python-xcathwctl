@@ -10,8 +10,8 @@ import requests
 import json
 import time
 
-from common import utils, rest
-from common.exceptions import SelfClientException, SelfServerException
+from xcathwctl.common import utils, rest
+from xcathwctl.common.exceptions import SelfClientException, SelfServerException
 
 import logging
 logger = logging.getLogger('xcathwctl')

@@ -10,10 +10,10 @@ import gevent
 import time
 import os
 
-from common.task import ParallelNodesCommand
-from common.exceptions import SelfClientException, SelfServerException
-from hwctl import openbmc_client as openbmc
-from common import utils
+from xcathwctl.common.task import ParallelNodesCommand
+from xcathwctl.common.exceptions import SelfClientException, SelfServerException
+from xcathwctl.hwctl import openbmc_client as openbmc
+from xcathwctl.common import utils
 
 import logging
 logger = logging.getLogger('xcatagent')

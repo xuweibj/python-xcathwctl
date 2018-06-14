@@ -8,9 +8,9 @@ from __future__ import print_function
 import gevent
 import time
 
-from common.task import ParallelNodesCommand
-from common.exceptions import SelfClientException, SelfServerException
-from hwctl import openbmc_client as openbmc
+from xcathwctl.common.task import ParallelNodesCommand
+from xcathwctl.common.exceptions import SelfClientException, SelfServerException
+from xcathwctl.hwctl import openbmc_client as openbmc
 
 import logging
 logger = logging.getLogger('xcathwctl')
