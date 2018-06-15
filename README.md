@@ -22,9 +22,13 @@
 
 ``def inv_cpu``: show CPU information
 
-``def dimm``: show DIMM information
+``def inv_dimm``: show DIMM information
 
 ``def firm``: show firmware information
+
+``def inv_model``: show model information
+
+``def inv_serial``: show serial information
 
 ``def power_state``: show host power status
 
