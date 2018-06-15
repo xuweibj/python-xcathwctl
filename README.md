@@ -10,11 +10,15 @@
 
 ## Instantiation
 
-``OpenBMCManager(data, json_fmt=False, debug=False, verbose=True)``
+``OpenBMCManager(node_dict, json_fmt=False, debug=False, verbose=True)``
 
 ``node_dict`` is a dict contains node, bmcip, bmc, username, password. Format as: ``{"node1": {"bmcip": "x.x.x.x", "username": "root", "password": "xxxxxx"}, "node2": {"bmcip": "x.x.x.x", "username": "root", "password": "xxxxxx"}}``
 
-``verbose`` is bool, if "True" will print out verbose information.
+``json_fmt`` is boolean, if "True" will return json format result. If "False", return dict. Default is "True".
+
+``debug`` is bloolean, if "True" will print out debug information. Default is "False".
+
+``verbose`` is boolean, if "True" will print out verbose information. Default is "False".
 
 ## Methods of OpenBMCManager:
 
