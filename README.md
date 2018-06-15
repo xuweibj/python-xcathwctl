@@ -18,33 +18,33 @@
 
 ## Methods of OpenBMCManager:
 
-``def inventory``: show all inventory information
+``inventory``: show all inventory information
 
-``def inv_cpu``: show CPU information
+``inv_cpu``: show CPU information
 
-``def inv_dimm``: show DIMM information
+``inv_dimm``: show DIMM information
 
-``def firm``: show firmware information
+``firm``: show firmware information
 
-``def inv_model``: show model information
+``inv_model``: show model information
 
-``def inv_serial``: show serial information
+``inv_serial``: show serial information
 
-``def power_state``: show host power status
+``power_state``: show host power status
 
-``def power_on``: power on host
+``power_on``: power on host
 
-``def power_off``: power off host
+``power_off``: power off host
 
-``def power_softoff``: power softoff host
+``power_softoff``: power softoff host
 
-``def power_reset``: reset host
+``power_reset``: reset host
 
-``def power_boot``: boot host
+``power_boot``: boot host
 
-``def power_bmc_state``: show bmc status
+``power_bmc_state``: show bmc status
 
-``def power_bmc_reboot``: reboot bmc
+``power_bmc_reboot``: reboot bmc
 
 ## Return data from OpenBMCManager:
 
